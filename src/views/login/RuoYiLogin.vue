@@ -7,19 +7,6 @@
     <div class="login-form" @keyup.enter="login">
       <mt-field label="用户名" v-model="login_form.username" class="edit" :state="form_state.username" placeholder="请输入用户名"></mt-field>
       <mt-field label="密码" type="password" v-model="login_form.password" class="edit" :state="form_state.password" placeholder="请输入密码"></mt-field>
-      <div class="row m-t">
-        <div class="col-xs-6">
-          <input type="text" name="login_form.validateCode" class="form-control code" placeholder="验证码" maxlength="5" autocomplete="off">
-        </div>
-        <div class="col-xs-6">
-          <a href="javascript:void(0);" title="点击更换验证码">
-            <img src="captcha/captchaImage?type=math" class="imgcode" width="85%"/>
-          </a>
-        </div>
-      </div>
-      <div class="checkbox-custom">
-        <input type="checkbox" id="rememberme" name="login_form.rememberme"> <label for="rememberme">记住我</label>
-      </div>
       <button class="submit-btn" @click="login">登录</button>
     </div>
   </div>
@@ -44,9 +31,7 @@
         title: "登录",
         login_form: {
           username: "",
-          password: "",
-            validateCode: 15,
-            rememberMe: false
+          password: ""
         },
         form_state: {
           username: "",
@@ -74,9 +59,8 @@
         Indicator.open();
         // 延时1s发送
         setTimeout(() => {
-          Service.ruoyilogin(this.login_form).then(res => {
+          Service.login(this.login_form).then(res => {
             Indicator.close();
-            console.log(res);
             if (!res) {
               Toast({
                 message: "出错啦，请稍后再试",

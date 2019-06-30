@@ -16,7 +16,8 @@ for (let i = 0; i < Math.random() * 7 + 7; i++) {
         new_msg: true,
     });
 }
-
+let collection_list=[];
+let collection_list_state=[];
 export {
     user_list,
     user_msg,

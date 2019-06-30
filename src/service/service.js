@@ -4,6 +4,21 @@ const Service = {
     login(params) {
         return axios.post('/login', params).then(res => res.data);
     },
+    ruoyilogin(params) {
+        console.log("start ruoyi login...");
+        return axios.post('/ruoyilogin', params).then(res => res.data);
+/*        return axios({
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Content-Type': 'application/json; charset=UTF-8',
+                'Access-Control-Allow-Origin':'*',
+                'Access-Control-Allow-Headers': 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild',
+    },//设置跨域请求头
+            method: "POST",//请求方式
+            url: "/ruoyilogin",//请求地址
+            data: params
+        }).then(res => res.data);*/
+    },
     register(params) {
         return axios.post('/register', params).then(res => res.data);
     },
